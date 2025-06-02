@@ -1,23 +1,26 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GroqAIService } from "@/lib/groq-ai"
+import { getAuthSession } from "@/lib/auth"
+import { GroqAI } from "@/lib/groq-ai"
 
 export async function POST(request: NextRequest) {
   try {
-    const { content } = await request.json()
+    const session = await getAuthSession()
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: "Authentication required" }, { status: 401 })
+    }
 
+    const { content } = await request.json()
     if (!content) {
       return NextResponse.json({ error: "Content is required" }, { status: 400 })
     }
 
-    if (!GroqAIService.isAvailable()) {
-      return NextResponse.json({ error: "Groq AI is not available" }, { status: 503 })
-    }
-
-    const tags = await GroqAIService.generateTags(content)
-
+    const tags = await GroqAI.generateTags(content)
     return NextResponse.json({ tags })
   } catch (error) {
-    console.error("Groq tags error:", error)
-    return NextResponse.json({ error: "Failed to generate tags" }, { status: 500 })
+    console.error("Groq AI tags error:", error)
+    return NextResponse.json(
+      { error: "Failed to generate tags" },
+      { status: 500 }
+    )
   }
 }

@@ -1,27 +1,26 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { GroqAIService } from "@/lib/groq-ai"
+import { getAuthSession } from "@/lib/auth"
+import { GroqAI } from "@/lib/groq-ai"
 
 export async function POST(request: NextRequest) {
   try {
-    const { title, description } = await request.json()
-
-    if (!title || !description) {
-      return NextResponse.json({ error: "Title and description are required" }, { status: 400 })
+    const session = await getAuthSession()
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: "Authentication required" }, { status: 401 })
     }
 
-    if (!GroqAIService.isAvailable()) {
-      return NextResponse.json({ error: "Groq AI is not available" }, { status: 503 })
+    const { prompt } = await request.json()
+    if (!prompt) {
+      return NextResponse.json({ error: "Prompt is required" }, { status: 400 })
     }
 
-    const content = await GroqAIService.generateBlogContent(title, description)
-
-    return NextResponse.json({
-      content,
-      model: "groq-llama-3.1-8b-instant",
-      timestamp: new Date().toISOString(),
-    })
+    const content = await GroqAI.generate(prompt)
+    return NextResponse.json({ content })
   } catch (error) {
-    console.error("Groq generate error:", error)
-    return NextResponse.json({ error: "Failed to generate content" }, { status: 500 })
+    console.error("Groq AI generation error:", error)
+    return NextResponse.json(
+      { error: "Failed to generate content" },
+      { status: 500 }
+    )
   }
 }

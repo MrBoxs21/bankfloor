@@ -1,53 +1,28 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { generateTopicContent } from "@/lib/ai-assistant"
+import { getAuthSession } from "@/lib/auth"
+import { FreeAIService } from "@/lib/free-ai-models"
+import type { AIRequestBody } from "@/types/ai"
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const { title, description } = body
-
-    // Validate required fields
-    if (!title || !description) {
-      return NextResponse.json({ error: "Title and description are required" }, { status: 400 })
+    const session = await getAuthSession()
+    if (!session?.user?.email) {
+      return NextResponse.json({ error: "Authentication required" }, { status: 401 })
     }
 
-    // Validate input lengths
-    if (title.length > 200) {
-      return NextResponse.json({ error: "Title is too long (max 200 characters)" }, { status: 400 })
+    const { prompt, modelName } = (await request.json()) as AIRequestBody
+
+    if (!prompt) {
+      return NextResponse.json({ error: "Prompt is required" }, { status: 400 })
     }
 
-    if (description.length > 1000) {
-      return NextResponse.json({ error: "Description is too long (max 1000 characters)" }, { status: 400 })
-    }
-
-    // Generate content using free AI models
-    const content = await generateTopicContent(title.trim(), description.trim())
-
-    return NextResponse.json({
-      content,
-      method: "Free AI Models + Local Templates",
-      timestamp: new Date().toISOString(),
-    })
+    const content = await FreeAIService.generateContent(prompt, modelName)
+    return NextResponse.json({ content })
   } catch (error) {
-    console.error("Content generation API error:", error)
-
-    // Return specific error messages
-    if (error instanceof Error) {
-      return NextResponse.json(
-        {
-          error: error.message,
-          type: "generation_error",
-        },
-        { status: 500 },
-      )
-    }
-
+    console.error("AI generation error:", error)
     return NextResponse.json(
-      {
-        error: "An unexpected error occurred while generating content",
-        type: "unknown_error",
-      },
-      { status: 500 },
+      { error: "Failed to generate content" },
+      { status: 500 }
     )
   }
 }
